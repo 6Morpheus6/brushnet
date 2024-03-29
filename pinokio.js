@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-  version: "1.1",
+  version: "1.5",
   title: "brushnet",
   description: "A Plug-and-Play Image Inpainting Model with Decomposed Dual-Branch Diffusion https://huggingface.co/spaces/TencentARC/BrushNet",
   icon: "icon.gif",
