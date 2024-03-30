@@ -6,6 +6,7 @@ module.exports = {
   icon: "icon.gif",
   menu: async (kernel) => {
     let installing = await kernel.running(__dirname, "install.js")
+    let troubleshoot_installing = await kernel.running(__dirname, "troubleshoot_install.js")
     let installed = await kernel.exists(__dirname, "app", "env")
     let running = await kernel.running(__dirname, "start.js")
     if (installing) {
@@ -13,6 +14,12 @@ module.exports = {
         icon: "fa-solid fa-plug",
         text: "Installing",
         href: "install.js",
+      }]
+    } else if (troubleshoot_installing) {
+      return [{
+        icon: "fa-solid fa-plug",
+        text: "Installing",
+        href: "troubleshoot_install.js",
       }]
     } else if (installed) {
       if (running) {
@@ -47,6 +54,10 @@ module.exports = {
           icon: "fa-solid fa-plug",
           text: "Install",
           href: "install.js",
+        }, {
+          icon: "fa-solid fa-plug",
+          text: "Troubleshoot Install",
+          href: "troubleshoot_install.js",
         }, {
           icon: "fa-regular fa-circle-xmark",
           text: "Reset",
