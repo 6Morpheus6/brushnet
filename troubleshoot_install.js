@@ -11,6 +11,11 @@ module.exports = async (kernel) => {
         ]
       }
     }, {
+      method: "fs.rm",
+      params: {
+        path: "app/env"
+      }
+    }, {
       method: "shell.run",
       params: {
         venv: "env",
