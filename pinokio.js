@@ -56,7 +56,7 @@ module.exports = {
           href: "install.js",
         }, {
           icon: "fa-solid fa-plug",
-          text: "Troubleshoot Install",
+          text: "Troubleshoot Re-install",
           href: "troubleshoot_install.js",
         }, {
           icon: "fa-regular fa-circle-xmark",
