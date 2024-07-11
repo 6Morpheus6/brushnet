@@ -11,12 +11,14 @@ module.exports = {
     let running = await kernel.running(__dirname, "start.js")
     if (installing) {
       return [{
+        default: true,
         icon: "fa-solid fa-plug",
         text: "Installing",
         href: "install.js",
       }]
     } else if (troubleshoot_installing) {
       return [{
+        default: true,
         icon: "fa-solid fa-plug",
         text: "Installing",
         href: "troubleshoot_install.js",
@@ -26,6 +28,7 @@ module.exports = {
         let local = kernel.memory.local[path.resolve(__dirname, "start.js")]
         if (local && local.url) {
           return [{
+            default: true,
             icon: "fa-solid fa-rocket",
             text: "Open Web UI",
             href: local.url,
@@ -36,6 +39,7 @@ module.exports = {
           }]
         } else {
           return [{
+            default: true,
             icon: 'fa-solid fa-terminal',
             text: "Terminal",
             href: "start.js",
@@ -43,6 +47,7 @@ module.exports = {
         }
       } else {
         return [{
+          default: true,
           icon: "fa-solid fa-power-off",
           text: "Start",
           href: "start.js",
@@ -66,6 +71,7 @@ module.exports = {
       }
     } else {
       return [{
+        default: true,
         icon: "fa-solid fa-plug",
         text: "Install",
         href: "install.js",
