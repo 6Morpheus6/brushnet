@@ -16,6 +16,7 @@ module.exports = async (kernel) => {
         venv: "env",
         path: "app",
         message: [
+          "pip install huggingface_hub==0.25.2",
           "pip install -r requirements.txt"
         ],
       }
