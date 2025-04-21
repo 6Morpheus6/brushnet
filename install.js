@@ -1,40 +1,34 @@
-const config = require("./config.js")
-const pre = require("./pre.js")
-module.exports = async (kernel) => {
-  let script = {
-    run: [{
-      method: "shell.run",
-      params: {
-        message: [
-          "git lfs install",
-          "git clone https://huggingface.co/spaces/cocktailpeanut/BrushNet app",
-        ]
-      }
-    }, {
-      method: "shell.run",
+module.exports = {
+  run: [{
+    method: "shell.run",
+    params: {
+      message: [
+        "git lfs install",
+        "git clone https://huggingface.co/spaces/cocktailpeanut/BrushNet app",
+      ]
+    }
+  }, {
+    method: "script.start",
+    params: {
+      uri: "torch.js",
       params: {
         venv: "env",
         path: "app",
-        message: [
-          "pip install huggingface_hub==0.25.2",
-          "pip install -r requirements.txt"
-        ],
       }
-    }, {
-      method: "fs.share",
-      params: {
-        venv: "app/env"
-      }
-    }, {
-      method: "notify",
-      params: {
-        html: "Click the 'start' tab to get started!"
-      }
-    }]
-  }
-  let pre_command = pre(config, kernel)
-  if (pre_command) {
-    script.run[1].params.message = [pre_command].concat(script.run[1].params.message)
-  }
-  return script
+    }
+  }, {
+    method: "shell.run",
+    params: {
+      venv: "env",
+      path: "app",
+      message: [
+        "uv pip install -r requirements.txt"
+      ],
+    }
+  }, {
+    method: "notify",
+    params: {
+      html: "Click the 'start' tab to get started!"
+    }
+  }]
 }
